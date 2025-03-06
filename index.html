@@ -1,60 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Register</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <div class="form-container login-form-container">
-      <h2>Login</h2>
-      <form id="login-form">
-        <input type="email" placeholder="Email" id="login-email" required />
-        <input type="password" placeholder="Password" id="login-password" required />
-        <button type="submit">Login</button>
-        <p id="login-error" class="error-message"></p>
-        <p class="toggle-form">Don't have an account? <span id="show-register">Register here</span></p>
-      </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <h1>Pawan</h1>
+  <body>
+    <div class="container">
+      <div class="form-container login-form-container">
+        <h2>Login</h2>
+        <form id="login-form">
+          <input type="email" placeholder="Email" id="login-email" required />
+          <input
+            type="password"
+            placeholder="Password"
+            id="login-password"
+            required
+          />
+          <button type="submit">Login</button>
+          <p id="login-error" class="error-message"></p>
+          <p class="toggle-form">
+            Don't have an account? <span id="show-register">Register here</span>
+          </p>
+        </form>
+      </div>
+
+      <div class="form-container register-form-container">
+        <h2>Register</h2>
+        <form id="register-form">
+          <input
+            type="text"
+            placeholder="Username"
+            id="register-username"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            id="register-email"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            id="register-password"
+            required
+          />
+          <button type="submit">Register</button>
+          <p id="register-error" class="error-message"></p>
+          <p class="toggle-form">
+            Already have an account? <span id="show-login">Login here</span>
+          </p>
+        </form>
+      </div>
     </div>
 
-    <div class="form-container register-form-container">
-      <h2>Register</h2>
-      <form id="register-form">
-        <input type="text" placeholder="Username" id="register-username" required />
-        <input type="email" placeholder="Email" id="register-email" required />
-        <input type="password" placeholder="Password" id="register-password" required />
-        <button type="submit">Register</button>
-        <p id="register-error" class="error-message"></p>
-        <p class="toggle-form">Already have an account? <span id="show-login">Login here</span></p>
-      </form>
-    </div>
-  </div>
+    <!-- Firebase SDK -->
+    <script type="module">
+      // Import Firebase SDKs
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+      import { getAuth } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
-  <!-- Firebase SDK -->
-  <script type="module">
-  // Import Firebase SDKs
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+      // Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBw7_UhgWKBRGjSptsNq0JEV9f-aFVtvY0",
+        authDomain: "myproj-34e49.firebaseapp.com",
+        projectId: "myproj-34e49",
+        storageBucket: "myproj-34e49.appspot.com", // Fixed storage URL
+        messagingSenderId: "1067758988951",
+        appId: "1:1067758988951:web:b2d41d15b21c47c8f7c3d2",
+        measurementId: "G-KBEMZTC1JD",
+      };
 
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBw7_UhgWKBRGjSptsNq0JEV9f-aFVtvY0",
-    authDomain: "myproj-34e49.firebaseapp.com",
-    projectId: "myproj-34e49",
-    storageBucket: "myproj-34e49.appspot.com",  // Fixed storage URL
-    messagingSenderId: "1067758988951",
-    appId: "1:1067758988951:web:b2d41d15b21c47c8f7c3d2",
-    measurementId: "G-KBEMZTC1JD"
-  };
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // Store auth globally so script.js can access it
-  window.auth = auth;
-  </script>
-</body>
+      // Store auth globally so script.js can access it
+      window.auth = auth;
+    </script>
+  </body>
 </html>
